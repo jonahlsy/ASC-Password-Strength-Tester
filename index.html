@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Password Strength Tester</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"> 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <a href="#" class="logo">PAST</a>
+            <ul>
+                <li><a href="#" class="active">HOME</a></li>
+                <li><a href="#sec">ABOUT</a></li>
+                <li><a href="#testnowp">SERVICES</a></li>
+                <li><a href="#passgenp">GENERATOR</a></li>
+            </ul>
+        </header>
+        <section>
+            <img src="stars.png" id="stars">
+            <img src="moon.png" id="moon">
+            <img src="mountains_behind.png" id="mountains_behind">
+            <h2 id="text">Password Strength Tester</h2>
+            <a href="#testnowp" id="btn">Test</a>
+            <img src="mountains_front.png" id="mountains_front">
+        </section>
+        <div class="sec" id="sec">
+            <h2>ABOUT US</h2>
+            <!-- escape user-generated content using innertext -->
+            <p id="aboutuscontent"></p>
+        </div>
+
+        <div class="testnowp" id="testnowp">
+            <div class="testnow" id="testnow">   
+                <div class="pass-field" id="pass-field">
+                    <input type="password" placeholder="Ex@mp!3Pa5sW0rD" onkeypress="return disallowSpace(event)" autocomplete="new-password" style="color: #fff;">
+                    <i class="fa-solid fa-eye"></i>
+            </div>
+                <div class="content" id="content">
+                 <p style="color: #fff;">Password must contains</p>
+                    <ul class="requirement-list" id="requirement-list">
+                     <li>
+                        <i class="fa-solid fa-circle"></i>
+                        <span>At least 17 characters length</span>
+                     </li>
+                     <li>
+                        <i class="fa-solid fa-circle"></i>
+                        <span>At least 1 number (0...9)</span>
+                     </li>
+                     <li>
+                        <i class="fa-solid fa-circle"></i>
+                        <span>At least 1 lowercase letter (a...z)</span>
+                     </li>
+                     <li>
+                        <i class="fa-solid fa-circle"></i>
+                        <span>At least 1 uppercase character (A...Z)</span>
+                     </li>
+                     <li>
+                        <i class="fa-solid fa-circle"></i>
+                        <span>At least 1 special character (!...$)</span>
+                     </li>
+                </ul>
+            </div>
+        </div>
+        </div>
+        
+        <script>
+            let stars = document.getElementById('stars');
+            let moon = document.getElementById('moon');
+            let mountains_behind = document.getElementById('mountains_behind');
+            let text = document.getElementById('text');
+            let btn = document.getElementById('btn');
+            let mountains_front = document.getElementById('mountains_front');
+            let header = document.querySelector('header');
+
+            window.addEventListener('scroll',function(){
+                let value = window.scrollY;
+                stars.style.left = value * 0.25 + 'px';
+                moon.style.top = value * 1.05 + 'px';
+                mountains_behind.style.left = value * 0.5 + 'px';
+                mountains_front.style.left = value * 0 + 'px';
+                text.style.marginRight = value * 4 + 'px';
+                text.style.marginTop = value * 1.5 + 'px';
+                btn.style.marginTop = value * 1.5 + 'px';
+                header.style.top = value * 0.5 + 'px';
+            })
+        </script>
+
+        <div class="passgenp" id="passgenp" style="display: flex; align-items: center; justify-content: center; min-height: 100vh;">
+        <div class="passgen">
+            <h2 style="text-align: center;">Password Generator</h2>
+            <div class="passgenwrapper">
+                <div class="passgeninputbox">
+                    <input type="text" value="Ex@mp13_PAs5W0rD" disabled>
+                    <span class="material-symbols-outlined">copy_all</span>
+                </div>
+                <div class="passgenindicator"></div>
+                <div class="passgenlength">
+                    <div class="passgendetails">
+                        <label class="passgentitle">Password Length</label>
+                        <span>15</span>
+                    </div>
+                    <input type="range" min="1" max="30" value="15" step="1">
+                </div>
+                <div class="passgensettings">
+                    <label class="passgensettitle">Password Settings</label>
+                    <ul class="passgenoptions">
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgenlowercase" checked>
+                            <label for="passgenlowercase">Lowercase (a-z)</label>
+                        </li>
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgenuppercase">
+                            <label for="passgenuppercase">Uppercase (A-Z)</label>
+                        </li>
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgennumbers">
+                            <label for="passgennumbers">Numbers (0-9)</label>
+                        </li>
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgensymbols">
+                            <label for="passgensymbols">Symbols (!-$)</label>
+                        </li>
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgenexcdup">
+                            <label for="passgenexcdup" style="font-size: 14px;">Exclude Duplicated Letters</label>
+                        </li>
+                        <li class="passgenoption">
+                            <input type="checkbox" id="passgenspaces">
+                            <label for="passgenspaces">Include Spaces</label>
+                        </li>
+                    </ul>
+                </div>
+                <button class="passgenbtn">Generate Password</button>
+            </div>
+        </div>
+    </div>
+
+    </body>
+</html>
